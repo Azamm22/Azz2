@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История заявок</title>
+</head>
+<body>
+    <header>
+        <h1>Панель администратора</h1>
+        <nav>
+    <ul>
+        <li><a href="{{ url_for('admin_applications') }}">Заявки</a></li>
+        <li><a href="{{ url_for('admin_couriers') }}">Курьеры</a></li>
+        <li><a href="{{ url_for('admin_application_history') }}">История заявок</a></li>
+        <li><a href="{{ url_for('admin_statistics') }}">Статистика</a></li>
+        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+    </ul>
+</nav>
+
+    </header>
+    <main>
+        <h2>История заявок</h2>
+        <table border="1">
+            <tr>
+                <th>ID заявки</th>
+                <th>Пользователь</th>
+                <th>ФИО</th>
+                <th>Контакт</th>
+                <th>Город</th>
+                <th>Транспорт</th>
+                <th>Статус</th>
+                <th>Причина отказа</th>
+            </tr>
+            {% for record in history %}
+            <tr>
+                <td>{{ record['id'] }}</td>
+                <td>{{ record['username'] }}</td>
+                <td>{{ record['full_name'] }}</td>
+                <td>{{ record['contact_number'] }}</td>
+                <td>{{ record['city'] }}</td>
+                <td>{{ record['transport_type'] }}</td>
+                <td>{{ record['status'] }}</td>
+                <td>{{ record['reason'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

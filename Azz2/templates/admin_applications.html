@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заявки</title>
+</head>
+<body>
+    <header>
+        <h1>Панель администратора - Заявки</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_applications') }}">Заявки</a></li>
+                <li><a href="{{ url_for('admin_couriers') }}">Курьеры</a></li>
+                <li><a href="{{ url_for('admin_application_history') }}">История заявок</a></li>
+                <li><a href="{{ url_for('admin_statistics') }}">Статистика</a></li>
+                <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Заявки курьеров</h2>
+        <table border="1">
+            <tr>
+                <th>ФИО</th>
+                <th>Контакт</th>
+                <th>Город</th>
+                <th>Транспорт</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+            {% for app in applications %}
+            <tr>
+                <td>{{ app['full_name'] }}</td>
+                <td>{{ app['contact_number'] }}</td>
+                <td>{{ app['city'] }}</td>
+                <td>{{ app['transport_type'] }}</td>
+                <td>{{ app['status'] }}</td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="application_id" value="{{ app['id'] }}">
+                        <button name="action" value="accept">Принять</button>
+                        <button name="action" value="reject">Отклонить</button>
+                        <textarea name="reason" placeholder="Причина отказа"></textarea>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

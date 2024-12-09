@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+</head>
+<body>
+    <h1>Панель администратора</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('admin_applications') }}">Заявки</a></li>
+            <li><a href="{{ url_for('admin_couriers') }}">Курьеры</a></li>
+            <li><a href="{{ url_for('admin_application_history') }}">История заявок</a></li>
+            <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+        </ul>
+    </nav>
+    <h2>Добро пожаловать в панель администратора!</h2>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика</title>
+</head>
+<body>
+    <header>
+        <h1>Панель администратора - Статистика</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_applications') }}">Заявки</a></li>
+                <li><a href="{{ url_for('admin_couriers') }}">Курьеры</a></li>
+                <li><a href="{{ url_for('admin_application_history') }}">История заявок</a></li>
+                <li><a href="{{ url_for('admin_statistics') }}">Статистика</a></li>
+                <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Общая статистика</h2>
+        <ul>
+            <li>Всего заявок: {{ total_applications }}</li>
+            <li>Принято: {{ accepted_applications }}</li>
+            <li>Отклонено: {{ rejected_applications }}</li>
+            <li>В ожидании: {{ pending_applications }}</li>
+            <li>Курьеров: {{ total_couriers }}</li>
+        </ul>
+    </main>
+</body>
+</html>

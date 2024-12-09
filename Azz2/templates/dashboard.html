@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет курьера</title>
+</head>
+<body>
+    <h1>Добро пожаловать, {{ session['username'] }}!</h1>
+
+    {% if status == "pending" %}
+        <p>Ваша заявка на рассмотрении. Пожалуйста, ожидайте решения от администратора.</p>
+
+    {% elif status == "accepted" %}
+        <p>Ваша заявка принята! Вы теперь активный курьер. Вы можете приступать к работе.</p>
+
+    {% elif status == "rejected" %}
+        <p>К сожалению, ваша заявка была отклонена. Причина: {{ reason }}</p>
+        <p>Пожалуйста, исправьте ошибки и отправьте заявку повторно.</p>
+
+    {% elif status == "new" %}
+        <h2>Заполните анкету</h2>
+        <form method="POST">
+            <label for="full_name">ФИО:</label>
+            <input type="text" id="full_name" name="full_name" required><br><br>
+
+            <label for="contact_number">Контактный номер:</label>
+            <input type="text" id="contact_number" name="contact_number" required><br><br>
+
+            <label for="city">Город:</label>
+            <input type="text" id="city" name="city" required><br><br>
+
+            <label for="transport_type">Тип транспорта:</label>
+            <select id="transport_type" name="transport_type" required>
+                <option value="Пеший">Пеший</option>
+                <option value="Автомобиль">Автомобиль</option>
+                <option value="Мопед">Мопед</option>
+            </select><br><br>
+
+            <button type="submit">Отправить заявку</button>
+        </form>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('logout') }}">Выйти</a>
+</body>
+</html>

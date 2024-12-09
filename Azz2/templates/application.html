@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка</title>
+</head>
+<body>
+    <h2>Заполните анкету</h2>
+    <form method="POST">
+        <label for="full_name">ФИО:</label>
+        <input type="text" id="full_name" name="full_name" required><br>
+
+        <label for="contact_number">Контактный номер:</label>
+        <input type="text" id="contact_number" name="contact_number" required><br>
+
+        <label for="city">Город:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="transport_type">Тип транспорта:</label>
+        <select name="transport_type" id="transport_type" required>
+            <option value="peshiy">Пеший</option>
+            <option value="avtomobil">Автомобиль</option>
+            <option value="moped">Мопед</option>
+        </select><br>
+
+        <button type="submit">Отправить заявку</button>
+    </form>
+</body>
+</html>

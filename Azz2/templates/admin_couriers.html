@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курьеры</title>
+</head>
+<body>
+    <header>
+        <h1>Панель администратора</h1>
+        <nav>
+    <ul>
+        <li><a href="{{ url_for('admin_applications') }}">Заявки</a></li>
+        <li><a href="{{ url_for('admin_couriers') }}">Курьеры</a></li>
+        <li><a href="{{ url_for('admin_application_history') }}">История заявок</a></li>
+        <li><a href="{{ url_for('admin_statistics') }}">Статистика</a></li>
+        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+    </ul>
+</nav>
+
+    </header>
+    <main>
+        <h2>Активные курьеры</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Имя пользователя</th>
+                <th>ФИО</th>
+                <th>Контакт</th>
+                <th>Город</th>
+                <th>Транспорт</th>
+            </tr>
+            {% for courier in couriers %}
+            <tr>
+                <td>{{ courier['id'] }}</td>
+                <td>{{ courier['username'] }}</td>
+                <td>{{ courier['full_name'] }}</td>
+                <td>{{ courier['contact_number'] }}</td>
+                <td>{{ courier['city'] }}</td>
+                <td>{{ courier['transport_type'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>
